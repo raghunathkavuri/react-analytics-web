@@ -1,71 +1,47 @@
-import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './style.css';
 
 import React, { useState, useEffect } from 'react';
-import {
-  Grid,
-  Typography,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Box,
-} from '@mui/material';
 
-import { makeStyles } from '@mui/styles';
+import Dashboard from './Dashboard';
+import CallsVsPutsOI from './CallsVsPutsOI';
+import PCRGraph from './PCRGraph';
+import OIDataTable from './OIDataTable';
 
-import { Menu as MenuIcon } from '@mui/icons-material';
-import Chart from 'chart.js';
-import { css } from '@emotion/react';
-import { styled } from '@mui/material/styles';
+// Fetch the option chain data
+async function fetchOptionChainData(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
 
-import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
-import { CssBaseline } from '@mui/core';
-
-const GlobalStyle = styled('body')`
-  background-color: #E0E0E0;
-`;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}));
-
-const theme = {
-  palette: {
-    primary: {
-      main: '#3f51b5',
-    },
-    secondary: {
-      main: '#ff4081',
-    },
-  },
-};
-
-export default function App() {
-  const classes = useStyles();
-  const [data, setData] = useState(null);
-
-  // useEffect(() => {
-  //   fetch('https://dummyjson.com/users')
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       setData(res);
-  //     });
-  // }, []);
-
+function App() {
   return (
-    <div>
-      <GlobalStyle />
-
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic happen :)</p>
-    </div>
+    // <MuiThemeProvider theme={theme}>
+    <Router>
+      <Route path="/" exact component={Dashboard} />
+      <Route path="/CallsVsPutsOI" component={CallsVsPutsOI} />
+      <Route path="/OIDataTable" component={OIDataTable} />
+      <Route path="/PCRGraph" component={PCRGraph} />
+    </Router>
+    // </MuiThemeProvider>
   );
+
+  // export default function App() {
+  //   // useEffect(() => {
+  //   //   fetch('https://dummyjson.com/users')
+  //   //     .then((res) => res.json())
+  //   //     .then((res) => {
+  //   //       setData(res);
+  //   //     });
+  //   // }, []);
+
+  //   return (
+  //     <div>
+  //       {/* <GlobalStyle /> */}
+
+  //       <h1>Hello StackBlitz!</h1>
+  //       <p>Start editing to see some magic happen :)</p>
+  //     </div>
+  //   );
 }
