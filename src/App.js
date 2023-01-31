@@ -9,8 +9,10 @@ import {
   Toolbar,
   IconButton,
   Box,
-  makeStyles,
 } from '@mui/material';
+
+import { makeStyles } from '@mui/styles';
+
 import { Menu as MenuIcon } from '@mui/icons-material';
 import Chart from 'chart.js';
 import { css } from '@emotion/react';
@@ -47,16 +49,32 @@ export default function App() {
   const classes = useStyles();
   const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch('input URL')
-      .then((res) => res.json())
-      .then((res) => {
-        setData(res);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://dummyjson.com/users')
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       setData(res);
+  //     });
+  // }, []);
 
   return (
     <div>
+      <GlobalStyle />
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            Option Chain
+          </Typography>
+        </Toolbar>
+      </AppBar>
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
     </div>
