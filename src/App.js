@@ -18,6 +18,9 @@ import Chart from 'chart.js';
 import { css } from '@emotion/react';
 import { styled } from '@mui/material/styles';
 
+import { createMuiTheme, ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/core';
+
 const GlobalStyle = styled('body')`
   background-color: #E0E0E0;
 `;
@@ -60,21 +63,7 @@ export default function App() {
   return (
     <div>
       <GlobalStyle />
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Option Chain
-          </Typography>
-        </Toolbar>
-      </AppBar>
+
       <h1>Hello StackBlitz!</h1>
       <p>Start editing to see some magic happen :)</p>
     </div>
