@@ -4,9 +4,6 @@ import './style.css';
 import React, { useState, useEffect } from 'react';
 
 import Dashboard from './Dashboard';
-import CallsVsPutsOI from './CallsVsPutsOI';
-import PCRGraph from './PCRGraph';
-import OIDataTable from './OIDataTable';
 
 // Fetch the option chain data
 async function fetchOptionChainData(url) {
@@ -20,9 +17,6 @@ function App() {
     // <MuiThemeProvider theme={theme}>
     <Router>
       <Route path="/" exact component={Dashboard} />
-      <Route path="/CallsVsPutsOI" component={CallsVsPutsOI} />
-      <Route path="/OIDataTable" component={OIDataTable} />
-      <Route path="/PCRGraph" component={PCRGraph} />
     </Router>
     // </MuiThemeProvider>
   );
